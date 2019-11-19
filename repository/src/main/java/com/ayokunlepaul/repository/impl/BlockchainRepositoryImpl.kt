@@ -5,6 +5,7 @@ import com.ayokunlepaul.domain.repository.BitCoinGrafikDomain
 import com.ayokunlepaul.repository.BlockchainGrafikRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -13,10 +14,15 @@ class BlockchainRepositoryImpl @Inject constructor(
     @Named("REMOTE") private val remote: BlockchainGrafikRepository
 ) : BitCoinGrafikDomain {
 
-    override fun getBitCoinGrafikValueRemote(): Completable {
-        return remote.getBitCoinValuesRemote().flatMapCompletable {
-            local.saveBitCoinValues(it)
-            Completable.complete()
+    override fun getBitCoinGrafikValueRemote(): Single<List<BitCoinChartValue>> {
+        return remote.getBitCoinValuesRemote().map { bitCoinChartEntities ->
+            local.saveBitCoinValues(bitCoinChartEntities)
+            bitCoinChartEntities.map {
+                BitCoinChartValue(
+                    xAxis = it.xAxis,
+                    yAxis = it.yAxis
+                )
+            }
         }
     }
 

@@ -1,9 +1,12 @@
 package com.ayokunlepaul.bitcoingrafik.presentation.fragments
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import com.ayokunlepaul.bitcoingrafik.BuildConfig
 import com.ayokunlepaul.bitcoingrafik.R
 import com.ayokunlepaul.bitcoingrafik.presentation.viewmodels.MainFragmentViewModel
 import com.ayokunlepaul.bitcoingrafik.utils.convert
@@ -29,12 +32,60 @@ class MainFragment : BaseFragment<MainFragmentViewModel>() {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-        mainFragmentViewModel.blockchainValues.observe(this, Observer {
-            populateChart(it.convert { bitCoinChartValue ->
-                bitCoinChartValue.toEntries()
-            })
+        setupToolbar()
+        mainFragmentViewModel.bitCoinValues.observe(this, Observer {
+            if (it == null) {
+                query_state.apply {
+                    setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+                    setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.faint_red))
+                    text = mainFragmentViewModel.errorMessage
+                    visibility = View.VISIBLE
+                }
+            } else {
+                query_state.apply {
+                    setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+                    setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.faint_green))
+                    text = requireContext().getString(R.string.data_fetched)
+                }
+                populateChart(it.convert { bitCoinChartValue ->
+                    bitCoinChartValue.toEntries()
+                })
+                Handler().postDelayed({
+                    query_state.visibility = View.GONE
+                }, 2000)
+//                (rootView as MotionLayout).apply {
+//                    loadLayoutDescription(R.xml.motion_file)
+//                    transitionToEnd()
+//                }
+            }
             Timber.e("$it")
         })
+    }
+
+    private fun setupToolbar() {
+        bitcoin_chart_toolbar.apply {
+            inflateMenu(R.menu.menu_refresh)
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_refresh -> {
+                        refresh()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
+    }
+
+    private fun refresh() {
+        query_state.apply {
+            setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimary))
+            setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.faint_blue))
+            text = requireContext().getString(R.string.fetching_data)
+            visibility = View.VISIBLE
+        }
+//        (rootView as MotionLayout).transitionToStart()
+        mainFragmentViewModel.getBitCoinValues()
     }
 
     private fun populateChart(entries: List<Entry>) {
@@ -43,7 +94,7 @@ class MainFragment : BaseFragment<MainFragmentViewModel>() {
             color = ContextCompat.getColor(requireContext(), R.color.colorPrimary)
         }
         bitcoin_data_chart.apply {
-            isLogEnabled = true
+            isLogEnabled = BuildConfig.DEBUG
             description = Description().apply { text = "Average USD market price across major bitcoin exchanges." }
             data = LineData(dataSet)
             invalidate()

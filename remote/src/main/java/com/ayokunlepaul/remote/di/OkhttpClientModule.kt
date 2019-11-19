@@ -28,7 +28,7 @@ class OkhttpClientModule {
 
     @Provides
     fun provideOkhttpClient(
-        cache: Cache?,
+        cache: Cache,
         httpInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         return okhttp {

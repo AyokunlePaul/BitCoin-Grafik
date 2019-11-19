@@ -11,19 +11,25 @@ class MainFragmentViewModel @Inject constructor(
     private val grafik: BlockchainGrafik
 ): ViewModel() {
 
-    private val _blockchainValues = MutableLiveData<List<BitCoinChartValue>>()
-    val blockchainValues: LiveData<List<BitCoinChartValue>>
-        get() = _blockchainValues
+    private val _bitCoinValues = MutableLiveData<List<BitCoinChartValue>>()
+    val bitCoinValues: LiveData<List<BitCoinChartValue>>
+        get() = _bitCoinValues
+
+    lateinit var errorMessage: String
 
     init {
-        grafik.getBlockchainValuesRemote()
-        grafik.getBlockchainValuesLocal {
-            _blockchainValues.postValue(it.getOrNull())
-        }
+        getBitCoinValues()
     }
 
-    fun getBlockchainValues() {
-
+    fun getBitCoinValues() {
+        grafik.getBitCoinValuesRemote {
+            if (it.isSuccess) {
+                _bitCoinValues.postValue(it.getOrDefault(emptyList()))
+            } else {
+                it.exceptionOrNull()?.let { exception -> errorMessage = exception.localizedMessage!! }
+                _bitCoinValues.postValue(null)
+            }
+        }
     }
 
     override fun onCleared() {

@@ -10,11 +10,11 @@ class BlockchainGrafik @Inject constructor(
     private val remoteUseCase: GetBitCoinValuesRemoteUseCase
 ) {
 
-    fun getBlockchainValuesRemote() {
-        remoteUseCase.executeCompletableUseCaseAndPerform(onSuccess = {
-
+    fun getBitCoinValuesRemote(result: (Result<List<BitCoinChartValue>>) -> Unit) {
+        remoteUseCase.executeSingleUseCaseAndPerform(onSuccess = {
+            result.invoke(Result.success(it))
         }) {
-
+            result.invoke(Result.failure(Throwable(it)))
         }
     }
 

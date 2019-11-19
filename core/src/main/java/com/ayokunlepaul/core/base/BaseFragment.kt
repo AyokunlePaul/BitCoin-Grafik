@@ -10,7 +10,7 @@ abstract class BaseFragment <out VIEWMODEL> : DaggerFragment() {
 
     abstract val layoutId: Int
 
-    private lateinit var rootView: View
+    protected lateinit var rootView: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
