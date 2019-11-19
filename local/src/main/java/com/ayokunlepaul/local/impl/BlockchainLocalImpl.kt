@@ -3,7 +3,7 @@ package com.ayokunlepaul.local.impl
 import com.ayokunlepaul.local.mapper.BlockchainChartValueLocalModelMapper
 import com.ayokunlepaul.local.room.dao.BitCoinValueDao
 import com.ayokunlepaul.repository.models.BitCoinChartValueEntity
-import com.ayokunlepaul.repository.BlockchainGrafikRepository
+import com.ayokunlepaul.repository.BitCoinGrafikRepository
 import io.reactivex.Observable
 import io.reactivex.Single
 import javax.inject.Inject
@@ -11,7 +11,7 @@ import javax.inject.Inject
 class BlockchainLocalImpl @Inject constructor(
     private val blockchainValueDao: BitCoinValueDao,
     private val mapper: BlockchainChartValueLocalModelMapper
-) : BlockchainGrafikRepository {
+) : BitCoinGrafikRepository {
 
     override fun getBitCoinValuesRemote(): Single<List<BitCoinChartValueEntity>> {
         throw IllegalStateException("Implementation doesn't exist in this module")

@@ -1,7 +1,7 @@
 package com.ayokunlepaul.local.di
 
 import com.ayokunlepaul.local.impl.BlockchainLocalImpl
-import com.ayokunlepaul.repository.BlockchainGrafikRepository
+import com.ayokunlepaul.repository.BitCoinGrafikRepository
 import dagger.Binds
 import dagger.Module
 import javax.inject.Named
@@ -13,5 +13,5 @@ abstract class LocalImplModule {
     @Named("LOCAL")
     internal abstract fun bindBlockchainGrafik(
         impl: BlockchainLocalImpl
-    ): BlockchainGrafikRepository
+    ): BitCoinGrafikRepository
 }

@@ -4,7 +4,7 @@ import com.ayokunlepaul.repository.models.BitCoinChartValueEntity
 import io.reactivex.Observable
 import io.reactivex.Single
 
-interface BlockchainGrafikRepository {
+interface BitCoinGrafikRepository {
 
     fun getBitCoinValuesRemote(): Single<List<BitCoinChartValueEntity>>
 

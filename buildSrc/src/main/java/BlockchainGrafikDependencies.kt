@@ -226,6 +226,8 @@ fun DependencyHandler.implementRepository() {
     inject()
     add("implementation", Dependencies.DependencyInjection.dagger)
     add("kapt", Dependencies.DependencyInjection.daggerProcessor)
+    add("implementation", Dependencies.Test.mockk)
+    add("implementation", Dependencies.Test.junit)
     add("implementation", project(":domain"))
 }
 
@@ -233,6 +235,8 @@ fun DependencyHandler.implementDomain() {
     add("implementation", kotlin("stdlib-jdk7", KotlinVersion))
     add("implementation", Dependencies.DependencyInjection.dagger)
     add("kapt", Dependencies.DependencyInjection.daggerProcessor)
+    add("implementation", Dependencies.Test.mockk)
+    add("implementation", Dependencies.Test.junit)
     implementAsync()
     inject()
 }

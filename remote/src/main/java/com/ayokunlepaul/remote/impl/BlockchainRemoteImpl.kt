@@ -3,7 +3,7 @@ package com.ayokunlepaul.remote.impl
 import com.ayokunlepaul.remote.services.BitcoinGrafikService
 import com.ayokunlepaul.remote.mapper.BlockchainChartValueRemoteModelMapper
 import com.ayokunlepaul.remote.utils.doOnError
-import com.ayokunlepaul.repository.BlockchainGrafikRepository
+import com.ayokunlepaul.repository.BitCoinGrafikRepository
 import com.ayokunlepaul.repository.models.BitCoinChartValueEntity
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -13,7 +13,7 @@ import javax.inject.Inject
 class BlockchainRemoteImpl @Inject constructor(
     private val service: BitcoinGrafikService,
     private val mapper: BlockchainChartValueRemoteModelMapper
-) : BlockchainGrafikRepository {
+) : BitCoinGrafikRepository {
 
     override fun getBitCoinValuesRemote(): Single<List<BitCoinChartValueEntity>> {
         return service.getCharts("market-price").doOnError().observeOn(AndroidSchedulers.mainThread()).map {

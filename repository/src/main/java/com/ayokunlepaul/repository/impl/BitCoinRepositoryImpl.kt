@@ -2,16 +2,15 @@ package com.ayokunlepaul.repository.impl
 
 import com.ayokunlepaul.domain.models.BitCoinChartValue
 import com.ayokunlepaul.domain.repository.BitCoinGrafikDomain
-import com.ayokunlepaul.repository.BlockchainGrafikRepository
-import io.reactivex.Completable
+import com.ayokunlepaul.repository.BitCoinGrafikRepository
 import io.reactivex.Observable
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Named
 
-class BlockchainRepositoryImpl @Inject constructor(
-    @Named("LOCAL") private val local: BlockchainGrafikRepository,
-    @Named("REMOTE") private val remote: BlockchainGrafikRepository
+class BitCoinRepositoryImpl @Inject constructor(
+    @Named("LOCAL") private val local: BitCoinGrafikRepository,
+    @Named("REMOTE") private val remote: BitCoinGrafikRepository
 ) : BitCoinGrafikDomain {
 
     override fun getBitCoinGrafikValueRemote(): Single<List<BitCoinChartValue>> {
