@@ -8,7 +8,6 @@ class BitCoinRepositoryImplTest {
 
     @MockK
     lateinit var local: BitCoinGrafikRepository
-
     @MockK
     lateinit var remote: BitCoinGrafikRepository
 
@@ -16,6 +15,4 @@ class BitCoinRepositoryImplTest {
     fun setup() {
         MockKAnnotations.init(this, relaxUnitFun = true)
     }
-
-    
 }

@@ -12,7 +12,6 @@ import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test
 
-
 class GetBitCoinValuesLocalUseCaseTest {
 
     @MockK
@@ -44,6 +43,6 @@ class GetBitCoinValuesLocalUseCaseTest {
         every { domain.getBitCoinGrafikValueLocal() } returns Observable.just(chartValue)
         val testObserver = useCase.buildObservableUseCase().test()
         testObserver.assertComplete()
-        verify (exactly = 1) { domain.getBitCoinGrafikValueLocal() }
+        verify(exactly = 1) { domain.getBitCoinGrafikValueLocal() }
     }
 }

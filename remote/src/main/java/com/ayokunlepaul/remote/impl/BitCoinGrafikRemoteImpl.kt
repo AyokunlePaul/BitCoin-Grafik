@@ -10,7 +10,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
-class BlockchainRemoteImpl @Inject constructor(
+class BitCoinGrafikRemoteImpl @Inject constructor(
     private val service: BitcoinGrafikService,
     private val mapper: BlockchainChartValueRemoteModelMapper
 ) : BitCoinGrafikRepository {
@@ -24,7 +24,7 @@ class BlockchainRemoteImpl @Inject constructor(
     }
 
     override fun saveBitCoinValues(value: List<BitCoinChartValueEntity>) {
-        throw IllegalStateException ("Implementation doesn't exist in this module")
+        throw IllegalStateException("Implementation doesn't exist in this module")
     }
 
     override fun getBitCoinValuesLocal(): Observable<List<BitCoinChartValueEntity>> {

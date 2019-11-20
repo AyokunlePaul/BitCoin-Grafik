@@ -1,6 +1,6 @@
 package com.ayokunlepaul.local.impl
 
-import com.ayokunlepaul.local.mapper.BlockchainChartValueLocalModelMapper
+import com.ayokunlepaul.local.mapper.BitCoinChartValueLocalModelMapper
 import com.ayokunlepaul.local.room.dao.BitCoinValueDao
 import com.ayokunlepaul.repository.models.BitCoinChartValueEntity
 import com.ayokunlepaul.repository.BitCoinGrafikRepository
@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class BlockchainLocalImpl @Inject constructor(
     private val blockchainValueDao: BitCoinValueDao,
-    private val mapper: BlockchainChartValueLocalModelMapper
+    private val mapper: BitCoinChartValueLocalModelMapper
 ) : BitCoinGrafikRepository {
 
     override fun getBitCoinValuesRemote(): Single<List<BitCoinChartValueEntity>> {

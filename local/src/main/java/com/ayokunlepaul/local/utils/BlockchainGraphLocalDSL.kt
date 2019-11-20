@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-inline fun <reified DATABASE: RoomDatabase> database(
+inline fun <reified DATABASE : RoomDatabase> database(
     context: Context,
     block: RoomDatabase.Builder<DATABASE>.() -> Unit
 ): DATABASE {

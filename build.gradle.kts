@@ -31,9 +31,9 @@ buildscript {
         maven { setUrl("https://plugins.gradle.org/m2/") }
     }
     dependencies {
-        classpath (kotlin("gradle-plugin", KotlinVersion))
-        classpath (Config.Classpaths.gradle)
-        classpath (Config.Classpaths.navigation)
+        classpath(kotlin("gradle-plugin", KotlinVersion))
+        classpath(Config.Classpaths.gradle)
+        classpath(Config.Classpaths.navigation)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle.kts files
     }

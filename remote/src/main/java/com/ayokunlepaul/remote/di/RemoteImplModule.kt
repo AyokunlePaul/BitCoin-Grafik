@@ -1,6 +1,6 @@
 package com.ayokunlepaul.remote.di
 
-import com.ayokunlepaul.remote.impl.BlockchainRemoteImpl
+import com.ayokunlepaul.remote.impl.BitCoinGrafikRemoteImpl
 import com.ayokunlepaul.repository.BitCoinGrafikRepository
 import dagger.Binds
 import dagger.Module
@@ -12,6 +12,6 @@ abstract class RemoteImplModule {
     @Binds
     @Named("REMOTE")
     internal abstract fun bindBitcoinGrafikRemote(
-        impl: BlockchainRemoteImpl
+        impl: BitCoinGrafikRemoteImpl
     ): BitCoinGrafikRepository
 }

@@ -7,7 +7,6 @@ import com.ayokunlepaul.bitcoingrafik.di.modules.ViewModelBindingModule
 import com.ayokunlepaul.core.di.BitCoinGrafikCoreComponent
 import dagger.Component
 import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
 import dagger.android.support.AndroidSupportInjectionModule
 
 @Component(

@@ -1,6 +1,6 @@
 package com.ayokunlepaul.repository.models
 
-data class BitCoinChartValueEntity (
+data class BitCoinChartValueEntity(
     val xAxis: String,
     val yAxis: String
 )

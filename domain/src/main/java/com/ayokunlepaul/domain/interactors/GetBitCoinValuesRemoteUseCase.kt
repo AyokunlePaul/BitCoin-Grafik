@@ -4,7 +4,6 @@ import com.ayokunlepaul.domain.interactors.base.SingleUseCase
 import com.ayokunlepaul.domain.models.BitCoinChartValue
 import com.ayokunlepaul.domain.repository.BitCoinGrafikDomain
 import com.ayokunlepaul.domain.utils.BitCoinGrafikScheduler
-import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
 

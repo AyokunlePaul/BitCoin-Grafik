@@ -3,10 +3,8 @@ package com.ayokunlepaul.remote.di
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
-import io.reactivex.schedulers.Schedulers
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 @Module
 class NetworkFactoriesModule {
@@ -14,7 +12,7 @@ class NetworkFactoriesModule {
     @Provides
     internal fun provideGsonConverterFactory(
         gson: Gson
-    ): GsonConverterFactory{
+    ): GsonConverterFactory {
         return GsonConverterFactory.create(gson)
     }
 

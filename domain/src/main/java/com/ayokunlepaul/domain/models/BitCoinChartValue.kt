@@ -1,6 +1,6 @@
 package com.ayokunlepaul.domain.models
 
-data class BitCoinChartValue (
+data class BitCoinChartValue(
     val xAxis: String,
     val yAxis: String
 )

@@ -22,7 +22,7 @@ class OkhttpClientModule {
     }
 
     @Provides
-    fun provideCache(file: File): Cache?{
+    fun provideCache(file: File): Cache? {
         return Cache(file, 10 * 1000 * 1000)
     }
 

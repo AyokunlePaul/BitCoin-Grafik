@@ -1,13 +1,11 @@
 package com.ayokunlepaul.remote.mapper
 
 import com.ayokunlepaul.remote.model.BlockchainChartValueRemoteModel
-import com.ayokunlepaul.repository.models.BitCoinChartValueEntity
 import com.ayokunlepaul.repository.mapper.RepositoryMapper
+import com.ayokunlepaul.repository.models.BitCoinChartValueEntity
 import javax.inject.Inject
 
-class BlockchainChartValueRemoteModelMapper @Inject constructor(
-
-): RepositoryMapper<BlockchainChartValueRemoteModel, BitCoinChartValueEntity> {
+class BlockchainChartValueRemoteModelMapper @Inject constructor() : RepositoryMapper<BlockchainChartValueRemoteModel, BitCoinChartValueEntity> {
 
     override fun mapToRepository(from: BlockchainChartValueRemoteModel): BitCoinChartValueEntity {
         return BitCoinChartValueEntity(

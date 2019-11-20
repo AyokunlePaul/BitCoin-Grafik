@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class MainFragmentViewModel @Inject constructor(
     private val grafik: BlockchainGrafik
-): ViewModel() {
+) : ViewModel() {
 
     private val _bitCoinValues = MutableLiveData<List<BitCoinChartValue>>()
     val bitCoinValues: LiveData<List<BitCoinChartValue>>

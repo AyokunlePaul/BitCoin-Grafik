@@ -3,7 +3,6 @@ package com.ayokunlepaul.bitcoingrafik.presentation.fragments
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.ayokunlepaul.bitcoingrafik.BuildConfig

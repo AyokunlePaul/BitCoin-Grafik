@@ -7,4 +7,4 @@ import kotlin.reflect.KClass
 @MapKey
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
-annotation class BlockchainGrafikViewModelKey (val value: KClass<out ViewModel>)
+annotation class BitCoinGrafikViewModelKey(val value: KClass<out ViewModel>)

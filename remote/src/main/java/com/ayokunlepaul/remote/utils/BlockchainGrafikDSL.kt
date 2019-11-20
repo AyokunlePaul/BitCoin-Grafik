@@ -9,7 +9,7 @@ fun okhttp(block: OkHttpClient.Builder.() -> Unit): OkHttpClient {
     return OkHttpClient.Builder().apply(block).build()
 }
 
-fun retrofit (block: Retrofit.Builder.() -> Unit): Retrofit {
+fun retrofit(block: Retrofit.Builder.() -> Unit): Retrofit {
     return Retrofit.Builder().apply(block).build()
 }
 
