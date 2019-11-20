@@ -3,6 +3,7 @@ import org.gradle.kotlin.dsl.kotlin
 import org.gradle.kotlin.dsl.project
 
 const val KotlinVersion = "1.3.50"
+const val KtlintVersion = "8.2.0"
 
 object Config {
     object Versions {
@@ -13,6 +14,7 @@ object Config {
         const val versionCode = 1
         const val navigation = "2.2.0-alpha01"
         const val gradle = "3.5.2"
+        const val Ktlint = "0.34.2"
     }
 
     object Android {
@@ -24,6 +26,7 @@ object Config {
             "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
         const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$KotlinVersion"
+        const val ktlint = "org.jlleitschuh.gradle:ktlint-gradle:$KtlintVersion"
     }
 }
 
