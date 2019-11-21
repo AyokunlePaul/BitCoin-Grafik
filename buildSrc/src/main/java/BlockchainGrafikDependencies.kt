@@ -63,6 +63,7 @@ object Dependencies {
         }
 
         const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+        const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
@@ -220,6 +221,8 @@ fun DependencyHandler.implementRemote() {
     implementRetrofit()
     add("implementation", Dependencies.Utilities.timber)
     add("implementation", Dependencies.Async.rxAndroid)
+    add("implementation", Dependencies.Test.mockk)
+    add("implementation", Dependencies.Test.junit)
     add("implementation", kotlin("stdlib-jdk7", KotlinVersion))
     add("implementation", project(":repository"))
 }

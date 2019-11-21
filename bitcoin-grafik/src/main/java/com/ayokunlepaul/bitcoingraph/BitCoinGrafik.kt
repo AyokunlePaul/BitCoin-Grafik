@@ -1,10 +1,10 @@
-package com.ayokunlepaul.blockchaingraph
+package com.ayokunlepaul.bitcoingraph
 
 import com.ayokunlepaul.domain.interactors.GetBitCoinValuesRemoteUseCase
 import com.ayokunlepaul.domain.models.BitCoinChartValue
 import javax.inject.Inject
 
-class BlockchainGrafik @Inject constructor(
+class BitCoinGrafik @Inject constructor(
     private val remoteUseCase: GetBitCoinValuesRemoteUseCase
 ) {
 

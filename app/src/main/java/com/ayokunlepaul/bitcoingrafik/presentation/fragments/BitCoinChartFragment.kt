@@ -42,17 +42,11 @@ class BitCoinChartFragment : BaseFragment<MainFragmentViewModel>() {
                     visibility = View.VISIBLE
                 }
             } else {
-                query_state.apply {
-                    setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
-                    setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.faint_green))
-                    text = requireContext().getString(R.string.data_fetched)
-                }
+                query_state.visibility = View.GONE
+                showSnackBar(rootView, requireContext().getString(R.string.data_fetched), true)
                 populateChart(it.convert { bitCoinChartValue ->
                     bitCoinChartValue.toEntries()
                 })
-                Handler().postDelayed({
-                    query_state.visibility = View.GONE
-                }, 2000)
             }
             Timber.e("$it")
         })

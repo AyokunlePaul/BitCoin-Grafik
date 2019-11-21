@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ayokunlepaul.bitcoingrafik.model.BitCoinChartQueryModel
-import com.ayokunlepaul.blockchaingraph.BlockchainGrafik
+import com.ayokunlepaul.bitcoingraph.BitCoinGrafik
 import com.ayokunlepaul.domain.models.BitCoinChartValue
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class MainFragmentViewModel @Inject constructor(
-    private val grafik: BlockchainGrafik
+    private val grafik: BitCoinGrafik
 ) : ViewModel() {
 
     private val _bitCoinValues = MutableLiveData<List<BitCoinChartValue>>()

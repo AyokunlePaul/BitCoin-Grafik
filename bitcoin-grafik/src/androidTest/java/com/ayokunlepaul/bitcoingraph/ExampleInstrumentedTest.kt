@@ -1,4 +1,4 @@
-package com.ayokunlepaul.blockchaingraph
+package com.ayokunlepaul.bitcoingraph
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
