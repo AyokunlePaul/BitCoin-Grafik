@@ -1,7 +1,6 @@
 package com.ayokunlepaul.bitcoingrafik.presentation.fragments
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -43,7 +42,7 @@ class BitCoinChartFragment : BaseFragment<MainFragmentViewModel>() {
                 }
             } else {
                 query_state.visibility = View.GONE
-                showSnackBar(rootView, requireContext().getString(R.string.data_fetched), true)
+                showSnackBar(rootView, requireContext().getString(R.string.data_fetched), false)
                 populateChart(it.convert { bitCoinChartValue ->
                     bitCoinChartValue.toEntries()
                 })

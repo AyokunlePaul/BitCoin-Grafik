@@ -13,7 +13,6 @@ class MainFragmentViewModelTest {
     @MockK
     lateinit var grafik: BitCoinGrafik
 
-
     private val viewModel by lazy { MainFragmentViewModel(grafik) }
 
     @Before

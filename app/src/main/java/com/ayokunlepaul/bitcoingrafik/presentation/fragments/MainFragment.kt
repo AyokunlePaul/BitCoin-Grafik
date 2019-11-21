@@ -21,6 +21,16 @@ class MainFragment : BaseFragment<MainFragmentViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         setupDropDownMenus()
         get_bitcoin_graph.setOnClickListener {
+            when {
+                statistics_auto_complete.text.isEmpty() -> {
+                    showSnackBar(rootView, "Please select stat type", true)
+                    return@setOnClickListener
+                }
+                time_span_auto_complete.text.isEmpty() -> {
+                    showSnackBar(rootView, "Please select time span", true)
+                    return@setOnClickListener
+                }
+            }
             val direction = MainFragmentDirections.actionFragmentMainToFragmentBitcoinChart()
             navigate(direction)
         }

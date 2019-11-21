@@ -34,7 +34,7 @@ class MainFragmentViewModel @Inject constructor(
     }
 
     fun getBitCoinValues() {
-        grafik.getBitCoinValuesRemote (
+        grafik.getBitCoinValuesRemote(
             bitCoinChartQueryModel.statType!!,
             bitCoinChartQueryModel.span!!
         ) {

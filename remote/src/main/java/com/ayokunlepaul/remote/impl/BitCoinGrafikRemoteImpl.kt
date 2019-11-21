@@ -6,7 +6,6 @@ import com.ayokunlepaul.remote.utils.doOnError
 import com.ayokunlepaul.repository.BitCoinGrafikRepository
 import com.ayokunlepaul.repository.models.BitCoinChartValueEntity
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
 class BitCoinGrafikRemoteImpl @Inject constructor(

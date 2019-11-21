@@ -1,6 +1,6 @@
 package com.ayokunlepaul.bitcoingrafik.model
 
-data class BitCoinChartQueryModel (
+data class BitCoinChartQueryModel(
     var statType: String? = null,
     var span: String? = null
 ) {

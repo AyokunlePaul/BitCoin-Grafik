@@ -32,7 +32,7 @@ class BitCoinGrafikRemoteImplTest {
     fun `test that getCharts return data`() {
         val chartName = "market-price"
         val queryMap = hashMapOf("timespan" to "30days")
-        every { service.getCharts(chartName, queryMap) }returns
+        every { service.getCharts(chartName, queryMap) } returns
                 Single.just(BaseBitcoinGrafikRemoteModel(data = testChartValue, status = "ok", unit = "USD"))
         val emittedValue = mutableListOf<BitCoinChartValueEntity>()
         val testObserver = impl.getBitCoinValuesRemote(chartName, queryMap).doOnSuccess {

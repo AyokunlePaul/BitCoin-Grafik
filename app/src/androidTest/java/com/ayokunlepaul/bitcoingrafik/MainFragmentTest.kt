@@ -42,7 +42,7 @@ class MainFragmentTest {
     fun testNavigationToChartFragment() {
         scenario.onFragment { Navigation.setViewNavController(it.requireView(), controller) }
         onView(withId(R.id.get_bitcoin_graph)).perform(click())
-        verify(atLeast = 1)  {
+        verify(atLeast = 1) {
             val direction = MainFragmentDirections.actionFragmentMainToFragmentBitcoinChart()
             controller.navigate(direction)
         }
