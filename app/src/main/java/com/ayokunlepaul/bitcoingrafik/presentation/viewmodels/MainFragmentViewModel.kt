@@ -20,7 +20,8 @@ class MainFragmentViewModel @Inject constructor(
 
     lateinit var errorMessage: String
 
-    private val bitCoinChartQueryModel by lazy { BitCoinChartQueryModel() }
+    /*For testing purposes, remove the private visibility*/
+    val bitCoinChartQueryModel by lazy { BitCoinChartQueryModel() }
 
     fun setStatType(
         type: String? = null,

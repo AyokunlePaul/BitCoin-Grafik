@@ -7,6 +7,7 @@ import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.reactivex.Single
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -38,8 +39,8 @@ class BitCoinGrafikTest {
         }
     }
 
-    @Test
-    fun cleanUp() {
-
+    @After
+    fun tearDown() {
+        grafik.cleanUp()
     }
 }

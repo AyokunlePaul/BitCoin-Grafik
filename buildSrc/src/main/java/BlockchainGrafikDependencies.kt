@@ -4,6 +4,7 @@ import org.gradle.kotlin.dsl.project
 
 const val KotlinVersion = "1.3.50"
 const val KtlintVersion = "8.2.0"
+const val LifeCycle = "2.0.0"
 
 object Config {
     object Versions {
@@ -36,15 +37,14 @@ object Dependencies {
         object Versions {
             const val coreKtx = "1.1.0"
             const val constraintLayout = "2.0.0-beta2"
-            const val lifecycle = "2.0.0"
             const val workManager = "2.2.0"
             const val navigation = "2.2.0-alpha01"
             const val multidex = "2.0.1"
         }
 
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
-        const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
-        const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
+        const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${LifeCycle}"
+        const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${LifeCycle}"
         const val navigationFragmentKtx =
             "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
         const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
@@ -152,11 +152,18 @@ object Dependencies {
             const val junit = "4.12"
             const val runner = "1.1.0"
             const val rules = "1.1.0"
+            const val testExt = "1.1.1"
+            const val espresso = "3.2.0"
+            const val fragment = "1.1.0-rc04"
         }
         const val mockk = "io.mockk:mockk:${Versions.mockk}"
         const val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
         const val junit = "junit:junit:${Versions.junit}"
         const val runner = "androidx.test:runner:${Versions.runner}"
+        const val coreTesting = "androidx.arch.core:core-testing:${LifeCycle}"
+        const val fragmentTesting = "androidx.fragment:fragment-testing:${Versions.fragment}"
+        const val testExt = "androidx.test.ext:junit:${Versions.testExt}"
+        const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
         const val rules = "androidx.test:rules:${Versions.rules}"
     }
 }
@@ -264,6 +271,15 @@ fun DependencyHandler.implementApp() {
     add("implementation", project(":core"))
     add("implementation", Dependencies.Utilities.timber)
     add("implementation", Dependencies.Utilities.MPAndroidChart)
+    add("testImplementation", Dependencies.Test.mockk)
+    add("testImplementation", Dependencies.Test.junit)
+    add("debugImplementation", Dependencies.Test.mockkAndroid)
+    add("debugImplementation", Dependencies.Test.runner)
+    add("debugImplementation", Dependencies.Test.testExt)
+    add("debugImplementation", Dependencies.Test.espresso)
+    add("debugImplementation", Dependencies.Test.rules)
+    add("debugImplementation", Dependencies.Test.coreTesting)
+    add("debugImplementation", Dependencies.Test.fragmentTesting)
     implementAndroidX()
     implementAsync()
     implementDI()
