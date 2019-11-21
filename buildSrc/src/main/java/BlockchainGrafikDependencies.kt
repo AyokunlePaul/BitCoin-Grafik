@@ -4,17 +4,6 @@ import org.gradle.kotlin.dsl.project
 
 const val KotlinVersion = "1.3.50"
 const val KtlintVersion = "8.2.0"
-const val JacocoVersion = "0.8.0"
-
-object Scripts {
-    private const val root = "scripts"
-    const val jacocoScript = "$root/jacoco.gradle.kts"
-    const val ktlintScript = "$root/ktlint.gradle.kts"
-}
-
-object GradleTasks {
-    const val jacocoTestReport = "jacocoTestReport"
-}
 
 object Config {
     object Versions {
@@ -39,7 +28,6 @@ object Config {
         const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$KotlinVersion"
         const val ktlint = "org.jlleitschuh.gradle:ktlint-gradle:$KtlintVersion"
-        const val jacoco = "org.jacoco:org.jacoco.core:$JacocoVersion"
     }
 }
 
