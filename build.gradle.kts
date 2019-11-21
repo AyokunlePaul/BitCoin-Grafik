@@ -41,6 +41,12 @@ buildscript {
 }
 
 allprojects {
+    /*A work around for failed D8 build  https://github.com/mockk/mockk/issues/281*/
+    configurations.all {
+        resolutionStrategy {
+            force("org.objenesis:objenesis:2.6")
+        }
+    }
     repositories {
         google()
         jcenter()

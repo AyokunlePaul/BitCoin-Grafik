@@ -6,11 +6,8 @@ import com.ayokunlepaul.domain.utils.BitCoinGrafikScheduler
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import io.mockk.verify
-import io.reactivex.Single
 import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
-import org.junit.Test
 
 class GetBitCoinValuesRemoteUseCaseTest {
 
@@ -29,18 +26,18 @@ class GetBitCoinValuesRemoteUseCaseTest {
         every { scheduler.executionThread } returns TestScheduler()
     }
 
-    @Test
-    fun testUseCaseExecutionSuccessful() {
-        every { domain.getBitCoinGrafikValueRemote() } returns Single.just(chartValue)
-        val testObserver = useCase.buildSingleUseCase().test()
-        testObserver.assertComplete()
-    }
+//    @Test
+//    fun testUseCaseExecutionSuccessful() {
+//        every { domain.getBitCoinGrafikValueRemote() } returns Single.just(chartValue)
+//        val testObserver = useCase.buildSingleUseCase().test()
+//        testObserver.assertComplete()
+//    }
 
-    @Test
-    fun `test that getBitCoinGrafikValueRemote is called`() {
-        every { domain.getBitCoinGrafikValueRemote() } returns Single.just(chartValue)
-        val testObserver = useCase.buildSingleUseCase().test()
-        testObserver.assertComplete()
-        verify(exactly = 1) { domain.getBitCoinGrafikValueRemote() }
-    }
+//    @Test
+//    fun `test that getBitCoinGrafikValueRemote is called`() {
+//        every { domain.getBitCoinGrafikValueRemote() } returns Single.just(chartValue)
+//        val testObserver = useCase.buildSingleUseCase().test()
+//        testObserver.assertComplete()
+//        verify(exactly = 1) { domain.getBitCoinGrafikValueRemote() }
+//    }
 }

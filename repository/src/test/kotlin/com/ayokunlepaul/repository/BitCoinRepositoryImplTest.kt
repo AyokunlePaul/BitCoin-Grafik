@@ -3,43 +3,32 @@ package com.ayokunlepaul.repository
 import com.ayokunlepaul.repository.impl.BitCoinRepositoryImpl
 import com.ayokunlepaul.repository.utils.Creator
 import io.mockk.MockKAnnotations
-import io.mockk.MockKException
-import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import io.mockk.verify
-import io.reactivex.Observable
 import org.junit.Before
-import org.junit.Test
 
 class BitCoinRepositoryImplTest {
 
     @MockK
-    lateinit var local: BitCoinGrafikRepository
-    @MockK
     lateinit var remote: BitCoinGrafikRepository
-    private val impl by lazy { BitCoinRepositoryImpl(local, remote) }
+    private val impl by lazy { BitCoinRepositoryImpl(remote) }
+
+    private val charts by lazy { Creator.create() }
 
     @Before
     fun setup() {
         MockKAnnotations.init(this, relaxUnitFun = true)
     }
 
-    @Test
-    fun `test that call to local works correctly`() {
-        every { local.getBitCoinValuesLocal() } returns Observable.just(Creator.create())
-        val testObserver = impl.getBitCoinGrafikValueLocal().test()
-        testObserver.assertComplete()
-
-        verify(exactly = 1) { local.getBitCoinValuesLocal() }
-    }
-
-    @Test(expected = MockKException::class)
-    fun `verify that trying to access remote implementation from local throws exception`() {
-        every { local.getBitCoinValuesRemote() } throws IllegalStateException("Implementation doesn't exist in this module")
-        every { local.getBitCoinValuesLocal() } returns Observable.just(Creator.create())
-        val testObserver = impl.getBitCoinGrafikValueRemote().test()
-        testObserver.assertComplete()
-
-        verify(exactly = 1) { local.getBitCoinValuesRemote() }
-    }
+//    @Test
+//    fun `verify that remote implementation returns the expected result`() {
+//        every { remote.getBitCoinValuesRemote() } returns Single.just(charts)
+//        val emittedValues = mutableListOf<BitCoinChartValueEntity>()
+//        val testObserver = impl.getBitCoinGrafikValueRemote().map {
+//            it.map { value -> BitCoinChartValueEntity(xAxis = value.xAxis, yAxis = value.yAxis) }
+//        }.doOnSuccess {
+//            emittedValues.addAll(it)
+//        }.test()
+//        assertEquals(charts, emittedValues)
+//        testObserver.assertComplete()
+//    }
 }

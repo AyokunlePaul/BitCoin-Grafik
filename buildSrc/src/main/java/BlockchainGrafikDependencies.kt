@@ -250,7 +250,6 @@ fun DependencyHandler.implementCore() {
     implementWorker()
     implementDI()
     implementAsync()
-    add("api", project(":local"))
     add("api", project(":remote"))
     add("api", project(":repository"))
     add("api", project(":domain"))

@@ -1,12 +1,12 @@
 package com.ayokunlepaul.domain.repository
 
 import com.ayokunlepaul.domain.models.BitCoinChartValue
-import io.reactivex.Observable
 import io.reactivex.Single
 
 interface BitCoinGrafikDomain {
 
-    fun getBitCoinGrafikValueRemote(): Single<List<BitCoinChartValue>>
-
-    fun getBitCoinGrafikValueLocal(): Observable<List<BitCoinChartValue>>
+    fun getBitCoinGrafikValueRemote(
+        statType: String,
+        queryMap: HashMap<String, String>
+    ): Single<List<BitCoinChartValue>>
 }

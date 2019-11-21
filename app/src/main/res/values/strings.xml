@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">BitCoin-Grafik</string>
-    <string name="fetching_data">Fetching Data...</string>
+    <string name="fetching_data">Fetching Data…</string>
     <string name="data_fetched">Data Fetched.</string>
     <string name="refresh">Refresh</string>
+    <string name="stat_type">Stat Type</string>
+    <string name="time_span">Time Span</string>
+    <string name="get_my_stat">Get Statistics</string>
 </resources>

@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import dagger.android.support.DaggerFragment
 
 abstract class BaseFragment <out VIEWMODEL> : DaggerFragment() {
 
     abstract val layoutId: Int
 
-    protected lateinit var rootView: View
+    private lateinit var rootView: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,4 +22,8 @@ abstract class BaseFragment <out VIEWMODEL> : DaggerFragment() {
         rootView = inflater.inflate(layoutId, container, false)
         return rootView
     }
+
+    protected fun navigate(direction: NavDirections) = findNavController().navigate(direction)
+
+    protected fun navigateBack() = findNavController().navigateUp()
 }

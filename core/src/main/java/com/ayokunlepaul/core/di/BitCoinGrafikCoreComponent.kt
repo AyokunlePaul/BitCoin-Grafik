@@ -5,9 +5,6 @@ import com.ayokunlepaul.core.di.modules.ContextModule
 import com.ayokunlepaul.core.di.modules.UtilityModule
 import com.ayokunlepaul.domain.repository.BitCoinGrafikDomain
 import com.ayokunlepaul.domain.utils.BitCoinGrafikScheduler
-import com.ayokunlepaul.local.di.BitCoinDatabaseModule
-import com.ayokunlepaul.local.di.LocalImplModule
-import com.ayokunlepaul.local.room.dao.BitCoinValueDao
 import com.ayokunlepaul.remote.di.RemoteImplModule
 import com.ayokunlepaul.remote.di.RetrofitModule
 import com.ayokunlepaul.remote.di.ServiceModule
@@ -17,15 +14,13 @@ import dagger.Component
     modules = [
         ContextModule::class, UtilityModule::class,
         RetrofitModule::class, RemoteImplModule::class,
-        ServiceModule::class, LocalImplModule::class,
-        BitCoinGraphFactoryModule::class, BitCoinDatabaseModule::class
+        ServiceModule::class, BitCoinGraphFactoryModule::class
     ]
 )
 interface BitCoinGrafikCoreComponent {
 
     fun scheduler(): BitCoinGrafikScheduler
     fun domain(): BitCoinGrafikDomain
-    fun provideBlockchainValueDao(): BitCoinValueDao
 
     @Component.Builder
     interface Builder {

@@ -3,10 +3,13 @@ package com.ayokunlepaul.bitcoingrafik.presentation.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ayokunlepaul.bitcoingrafik.model.BitCoinChartQueryModel
 import com.ayokunlepaul.blockchaingraph.BlockchainGrafik
 import com.ayokunlepaul.domain.models.BitCoinChartValue
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class MainFragmentViewModel @Inject constructor(
     private val grafik: BlockchainGrafik
 ) : ViewModel() {
@@ -17,12 +20,23 @@ class MainFragmentViewModel @Inject constructor(
 
     lateinit var errorMessage: String
 
-    init {
-        getBitCoinValues()
+    private val bitCoinChartQueryModel by lazy { BitCoinChartQueryModel() }
+
+    fun setStatType(
+        type: String? = null,
+        span: String? = null
+    ) {
+        bitCoinChartQueryModel.newBitCoinChartValues {
+            statType = type ?: this.statType
+            this.span = span ?: this.span
+        }
     }
 
     fun getBitCoinValues() {
-        grafik.getBitCoinValuesRemote {
+        grafik.getBitCoinValuesRemote (
+            bitCoinChartQueryModel.statType!!,
+            bitCoinChartQueryModel.span!!
+        ) {
             if (it.isSuccess) {
                 _bitCoinValues.postValue(it.getOrDefault(emptyList()))
             } else {

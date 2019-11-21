@@ -7,6 +7,20 @@
 
     <fragment android:name="com.ayokunlepaul.bitcoingrafik.presentation.fragments.MainFragment"
         tools:layout="@layout/fragment_main"
-        android:id="@+id/fragment_main"/>
+        android:id="@+id/fragment_main">
+
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_bitcoin_chart"
+            app:destination="@id/fragment_bitcoin_chart"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+
+    <fragment android:name="com.ayokunlepaul.bitcoingrafik.presentation.fragments.BitCoinChartFragment"
+        tools:layout="@layout/fragment_bitcoin_chart"
+        android:id="@+id/fragment_bitcoin_chart"/>
 
 </navigation>
